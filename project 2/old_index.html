@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    .form-section, .resume-section {
+      display: none;
+    }
+    .visible {
+      display: block;
+    }
+    .resume {
+      border-top: 2px solid #333;
+      padding-top: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section visible">
+      <h2>Enter Your Resume Details</h2>
+      <form id="resumeForm">
+        <label for="name">Full Name <span class="error" id="nameError"></span></label>
+        <input type="text" id="name" required>
+
+
+        <label for="email">Email <span class="error" id="emailError"></span></label>
+        <input type="email" id="email" required>
+
+
+        <label for="phone">Phone <span class="error" id="phoneError"></span></label>
+        <input type="text" id="phone" required>
+
+
+        <label for="summary">Summary</label>
+        <textarea id="summary"></textarea>
+
+
+        <label for="experience">Experience</label>
+        <textarea id="experience"></textarea>
+
+
+        <label for="education">Education</label>
+        <textarea id="education"></textarea>
+
+
+        <button type="submit">Generate Resume</button>
+      </form>
+    </div>
+
+    
+    <div class="resume-section">
+      <h2>Resume</h2>
+      <div class="resume">
+        <h3 id="resName"></h3>
+        <p><strong>Email:</strong> <span id="resEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="resPhone"></span></p>
+        <h4>Summary</h4>
+        <p id="resSummary"></p>
+        <h4>Experience</h4>
+        <p id="resExperience"></p>
+        <h4>Education</h4>
+        <p id="resEducation"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('resumeForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('phoneError').textContent = '';
+
+      // Get values
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const summary = document.getElementById('summary').value.trim();
+      const experience = document.getElementById('experience').value.trim();
+      const education = document.getElementById('education').value.trim();
+
+      let valid = true;
+
+      // Validation
+      if (name === '') {
+        document.getElementById('nameError').textContent = 'Required';
+        valid = false;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('emailError').textContent = 'Invalid email';
+        valid = false;
+      }
+      if (!/^\d{10}$/.test(phone)) {
+        document.getElementById('phoneError').textContent = '10-digit phone';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Fill resume
+      document.getElementById('resName').textContent = name;
+      document.getElementById('resEmail').textContent = email;
+      document.getElementById('resPhone').textContent = phone;
+      document.getElementById('resSummary').textContent = summary;
+      document.getElementById('resExperience').textContent = experience;
+      document.getElementById('resEducation').textContent = education;
+
+      // Toggle views
+      document.querySelector('.form-section').classList.remove('visible');
+      document.querySelector('.resume-section').classList.add('visible');
+    });
+  </script>
+</body>
+</html>
