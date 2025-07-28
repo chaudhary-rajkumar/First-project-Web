@@ -1,40 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Maker</title>
+    <title>Resume builder</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <di class="formSection">
-            <h2>Enter your Resume Details please </h2>
-            <form action="" id="resumeform">
-                    <label for="name">Full name <span class="error"id="nameError"></span></label>
-                    <input type="text" id="name" required>
-
-                    <label for="email">Email<span class="error" id="emailError"></span> </label>
-                    <input type="text" id="email" required>
-
-                    <label for="phone">Phone <span class="error" id="phoneError"></span> </label>
-                    <input type="text" id="phone" required>
-
-                    <label for="summary">Summary</label>
-                    <textarea id="summary"></textarea>
-
-                    <label for="summary">Experience</label>
-                    <textarea id="experience"></textarea>
+    <header>
+        <nav>
+            <h2>Welcome To Resume Builder App </h2>
+        </nav>
+    </header>
 
 
-                    <label for="summary">Education</label>
-                    <textarea id="education"></textarea>
-                    
-                    <button type="submit">Make Resume</button>
 
 
-                </form>
-        
-        </div>
-    </div>
+    <main>
+        <form action="submit">
+            <div class="basicDetail">
+                <h2 class="heading">Basic Deatails</h2>
+                <label for="fname">Full Name</label>
+                <input type="text" name="fname" id="fname" placeholder="Enter your name" required> <br>
+
+                <label for="status">Status</label>
+                <input type="text" name="status" id="status" placeholder="eg :- Software Developer" required> <br>
+
+                <label for="dob">Date Of Birth</label>
+                <input type="date" name="dob" id="dob" placeholder="Enter your DOB" required> <br>
+
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="Enter your email" required> <br>
+
+                <label for="pnumber">Phone Number</label>
+                <input type="number" name="pnumber" id="pnumber" placeholder="Enter your phone number" required> <br>
+
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" placeholder="Enter your address" required> <br>
+
+                <label for="description">Describe about yourself</label>
+                <textarea name="description" id="description"></textarea><br><br><br>
+
+                <div class="photo">
+                    <label for="photo">Upload your photo</label>
+                    <input type="file" name="photo" id="photo" accept="image/*">
+                </div>
+            </div>
+
+
+
+            <div class="break"></div>
+            <div class="skills">
+                <h2 class="heading">Choose your skills</h2>
+                <label><input type="checkbox" name="skill" value="HTML">HTML</label><br>
+                <label><input type="checkbox" name="skill" value="CSS">CSS</label><br>
+                <label><input type="checkbox" name="skill" value="javaScript">javaScript</label><br>
+                <label><input type="checkbox" name="skill" value="C">C</label><br>
+                <label><input type="checkbox" name="skill" value="C++">C++</label><br>
+                <label><input type="checkbox" name="skill" value="Python">Python</label><br>
+                <label><input type="checkbox" name="skill" value="Django">Django</label><br>
+                <label><input type="checkbox" name="skill" value="React Js">React Js</label><br>
+                <label><input type="checkbox" name="skill" value="Git & Github">Git & Github</label><br>
+            </div>
+
+
+            <div class="language">
+                <h2 class="heading">Choose language you know</h2>
+                <label><input type="checkbox" name="language" value="Hindi">Hindi</label><br>
+                <label><input type="checkbox" name="language" value="Nepali">Nepali</label><br>
+                <label><input type="checkbox" name="language" value="English">English</label><br>
+                <label><input type="checkbox" name="language" value="Korean">Korean</label><br>
+                <label><input type="checkbox" name="language" value="Awadhi">Awadhi</label><br>
+                <label><input type="checkbox" name="language" value="Others">Others</label><br>
+
+            </div><br>
+
+            <div class="hobby">
+                <div class="hobby-container">
+                    <label for="hobby"><h3>Enter your hobbies</h3></label>
+                    <input type="text" name="hobby" id="hobby" placeholder="eg. Reading, Traveling, etc." required>
+                </div>
+                <button type="button" onclick="addHobby()">Add More Hobby</button>
+            </div><br><br>
+
+
+
+            <div class="education">
+                <h2 class="heading">Education Qualification</h2>
+                <div class="edu-entery">
+                    <label>School / College: <input type="text" name="eduTitle[]" id="eduInput" required></label><br>
+                    <label>Level: <br> <textarea id="eduInput"name="eduDesc[]" required></textarea></label>
+                </div>
+            </div>
+            <button type="button" onclick="addEdu()">Add Education</button><br>
+
+
+
+            <div class="certificate">
+                <h3 class="heading">Add your Extra Activities</h3>
+                <label>Certifications:  <br> <input type="text" name="certiTitle[]" id="certiInput" required></label> <br>
+                <label>Detail: <br><textarea id="certiInput" name="certDes[]"required></textarea></label><br>
+            </div>
+            <button type="button" onclick="addCertificate()">Add More certifications</button><br><br>
+
+
+            <div class="experience">
+                <h2 class="headig">Enter your work experience</h2>
+                <label>Job Title: <input type="text" name="workTitle[]" id="workInput" required> </label><br>
+                <label>Description: <br><textarea id="workInput"name="workDes[]" required ></textarea></label>
+            </div>
+            <button type="button" onclick="addWork()">Add work Experience</button><br><br>
+
+
+
+            <input type="submit" value="submit" id="submit">
+
+
+
+
+
+        </form>
+    </main>
+
+
+
+    <footer>
+
+    </footer>
 </body>
+
 </html>
